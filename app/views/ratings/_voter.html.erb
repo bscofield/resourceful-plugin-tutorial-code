@@ -1,0 +1,20 @@
+<% form_for Rating.new(:rated => detail, :rating => 1), 
+    :html => {:class => 'remote'} do |f| %>
+  <%= f.hidden_field :rated_id %>
+  <%= f.hidden_field :rated_type %>
+  <%= f.hidden_field :rating %>
+  <button type="submit">+</button>
+<% end %>
+
+<span id="rated<%= detail.id %>">
+<%= detail.ratings.sum(:rating) %>
+</span>
+
+<% form_for Rating.new(:rated => detail, :rating => -1), 
+    :html => {:class => 'remote'} do |f| %>
+  <%= f.hidden_field :rated_id %>
+  <%= f.hidden_field :rated_type %>
+  <%= f.hidden_field :rating %>
+  <button type="submit">-</button>
+<% end %>
+<br />

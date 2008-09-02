@@ -1,0 +1,49 @@
+<p>
+  <b>Name:</b>
+  <%=h @discussion.name %>
+</p>
+<p>
+  <b>Poster:</b>
+  <%=h @discussion.poster %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @discussion.content %>
+</p>
+
+<hr />
+
+<ol>
+  <% @discussion.comments.each do |comm| %>
+    <li>
+      <%= h(comm.poster) %> said <br />
+      <%= simple_format h(comm.content) %>
+    </li>
+  <% end %>
+</ol>
+
+
+<hr />
+
+<% form_for @discussion.comments.build do |f| %>
+<%= f.hidden_field :discussion_id %>
+
+<div>
+  <%= f.label :poster %>
+  <%= f.text_field :poster %>
+</div>
+
+<div>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+</div>
+
+<%= submit_tag 'Create Comment' %>
+
+<% end %>
+
+
+
+<%= link_to 'Edit', edit_discussion_path(@discussion) %> |
+<%= link_to 'Back', discussions_path %>

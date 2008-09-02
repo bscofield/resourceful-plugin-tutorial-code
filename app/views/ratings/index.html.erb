@@ -1,0 +1,24 @@
+<h1>Listing ratings</h1>
+
+<table>
+  <tr>
+    <th>Rated</th>
+    <th>Rated type</th>
+    <th>Rating</th>
+  </tr>
+
+<% for rating in @ratings %>
+  <tr>
+    <td><%=h rating.rated_id %></td>
+    <td><%=h rating.rated_type %></td>
+    <td><%=h rating.rating %></td>
+    <td><%= link_to 'Show', rating %></td>
+    <td><%= link_to 'Edit', edit_rating_path(rating) %></td>
+    <td><%= link_to 'Destroy', rating, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New rating', new_rating_path %>

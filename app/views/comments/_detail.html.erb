@@ -1,0 +1,10 @@
+<li>
+  <%= render :partial => 'ratings/voter', :locals => {:detail => detail} %>
+
+  <%= h(detail.content)%>
+  <% unless detail.children.empty? %>
+    <ol>
+      <%= render :partial => 'comments/detail', :collection => detail.children %>
+    </ol>
+  <% end %>
+</li>

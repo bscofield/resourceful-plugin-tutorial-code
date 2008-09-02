@@ -1,0 +1,23 @@
+<h1>New rating</h1>
+
+<% form_for(@rating) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :rated_id %><br />
+    <%= f.text_field :rated_id %>
+  </p>
+  <p>
+    <%= f.label :rated_type %><br />
+    <%= f.text_field :rated_type %>
+  </p>
+  <p>
+    <%= f.label :rating %><br />
+    <%= f.text_field :rating %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', ratings_path %>

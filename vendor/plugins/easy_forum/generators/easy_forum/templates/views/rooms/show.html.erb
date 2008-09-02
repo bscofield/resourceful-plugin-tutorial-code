@@ -1,0 +1,42 @@
+<p>
+  <b>Name:</b>
+  <%=h @room.name %>
+</p>
+
+<hr />
+
+<ol>
+  <% @room.discussions.each do |dis| %>
+    <li>
+      <%= link_to h(dis.name), dis %>
+      (<%= dis.comments.count %>)
+    </li>
+  <% end %>
+</ol>
+
+<hr />
+
+<% form_for @room.discussions.build do |f| %>
+<%= f.hidden_field :room_id %>
+
+<div>
+  <%= f.label :poster %>
+  <%= f.text_field :poster %>
+</div>
+
+<div>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+
+<div>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+</div>
+
+<%= submit_tag 'Create Discussion' %>
+
+<% end %>
+
+<%= link_to 'Edit', edit_room_path(@room) %> |
+<%= link_to 'Back', rooms_path %>

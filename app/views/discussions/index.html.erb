@@ -1,0 +1,24 @@
+<h1>Listing discussions</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Poster</th>
+    <th>Comments</th>
+  </tr>
+
+<% for discussion in @discussions %>
+  <tr>
+    <td><%=h discussion.name %></td>
+    <td><%=h discussion.poster %></td>
+    <td><%=h discussion.comments.count %></td>
+    <td><%= link_to 'Show', discussion %></td>
+    <td><%= link_to 'Edit', edit_discussion_path(discussion) %></td>
+    <td><%= link_to 'Destroy', discussion, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New discussion', new_discussion_path %>

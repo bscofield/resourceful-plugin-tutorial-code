@@ -1,0 +1,32 @@
+<p>
+  <b>Name:</b>
+  <%=h @room.name %>
+</p>
+
+<hr />
+
+<ol>
+  <%= render :partial => 'comments/detail', :collection => @room.comments.top %>
+</ol>
+
+<hr />
+
+<% form_for @room.comments.build do |f| %>
+<%= f.hidden_field :room_id %>
+
+<div>
+  <%= f.label :poster %>
+  <%= f.text_field :poster %>
+</div>
+
+<div>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+</div>
+
+<%= submit_tag 'Create Comment' %>
+
+<% end %>
+
+<%= link_to 'Edit', edit_room_path(@room) %> |
+<%= link_to 'Back', rooms_path %>
