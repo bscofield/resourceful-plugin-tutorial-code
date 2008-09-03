@@ -1,4 +1,5 @@
-<% form_for Rating.new(:rated => detail, :rating => 1), 
+<% remote_form_for Rating.new(:rated => detail, :rating => 1), 
+    :update => "rated#{detail.id}",
     :html => {:class => 'remote'} do |f| %>
   <%= f.hidden_field :rated_id %>
   <%= f.hidden_field :rated_type %>
@@ -10,7 +11,8 @@
 <%= detail.ratings.sum(:rating) %>
 </span>
 
-<% form_for Rating.new(:rated => detail, :rating => -1), 
+<% remote_form_for Rating.new(:rated => detail, :rating => -1), 
+    :update => "rated#{detail.id}",
     :html => {:class => 'remote'} do |f| %>
   <%= f.hidden_field :rated_id %>
   <%= f.hidden_field :rated_type %>
